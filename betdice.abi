@@ -1,0 +1,211 @@
+{
+  "version": "eosio::abi/1.0",
+  "types": [],
+  "structs": [{
+      "name": "bet",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "bettor",
+          "type": "name"
+        },{
+          "name": "referral",
+          "type": "name"
+        },{
+          "name": "bet_amt",
+          "type": "uint64"
+        },{
+          "name": "roll_under",
+          "type": "uint64"
+        },{
+          "name": "seed",
+          "type": "checksum256"
+        },{
+          "name": "bet_time",
+          "type": "time_point_sec"
+        }
+      ]
+    },{
+      "name": "globalvar",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "val",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "randkey",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "key",
+          "type": "public_key"
+        }
+      ]
+    },{
+      "name": "transfer",
+      "base": "",
+      "fields": [{
+          "name": "from",
+          "type": "name"
+        },{
+          "name": "to",
+          "type": "name"
+        },{
+          "name": "quantity",
+          "type": "asset"
+        },{
+          "name": "memo",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "initcontract",
+      "base": "",
+      "fields": [{
+          "name": "randomness_key",
+          "type": "public_key"
+        }
+      ]
+    },{
+      "name": "newrandkey",
+      "base": "",
+      "fields": [{
+          "name": "randomness_key",
+          "type": "public_key"
+        }
+      ]
+    },{
+      "name": "suspendbet",
+      "base": "",
+      "fields": [{
+          "name": "bet_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "resolvebet",
+      "base": "",
+      "fields": [{
+          "name": "bet_id",
+          "type": "uint64"
+        },{
+          "name": "sig",
+          "type": "signature"
+        }
+      ]
+    },{
+      "name": "betreceipt",
+      "base": "",
+      "fields": [{
+          "name": "bet_id",
+          "type": "uint64"
+        },{
+          "name": "bettor",
+          "type": "name"
+        },{
+          "name": "amt_contract",
+          "type": "name"
+        },{
+          "name": "bet_amt",
+          "type": "asset"
+        },{
+          "name": "payout",
+          "type": "asset"
+        },{
+          "name": "seed",
+          "type": "checksum256"
+        },{
+          "name": "signature",
+          "type": "signature"
+        },{
+          "name": "roll_under",
+          "type": "uint64"
+        },{
+          "name": "random_roll",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "refundbet",
+      "base": "",
+      "fields": [{
+          "name": "bet_id",
+          "type": "uint64"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "transfer",
+      "type": "transfer",
+      "ricardian_contract": ""
+    },{
+      "name": "initcontract",
+      "type": "initcontract",
+      "ricardian_contract": ""
+    },{
+      "name": "newrandkey",
+      "type": "newrandkey",
+      "ricardian_contract": ""
+    },{
+      "name": "suspendbet",
+      "type": "suspendbet",
+      "ricardian_contract": ""
+    },{
+      "name": "resolvebet",
+      "type": "resolvebet",
+      "ricardian_contract": ""
+    },{
+      "name": "betreceipt",
+      "type": "betreceipt",
+      "ricardian_contract": ""
+    },{
+      "name": "refundbet",
+      "type": "refundbet",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "activebets",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "bet"
+    },{
+      "name": "globalvars",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "globalvar"
+    },{
+      "name": "randkeys",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "randkey"
+    }
+  ],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}
